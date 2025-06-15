@@ -27,7 +27,7 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)
 
 LOCAL_SRC_FILES := SDL_ttf.c.neon
 
-LOCAL_CFLAGS += -O2
+LOCAL_CFLAGS += -O3
 
 ifneq ($(FREETYPE_LIBRARY_PATH),)
     LOCAL_C_INCLUDES += $(LOCAL_PATH)/$(FREETYPE_LIBRARY_PATH)/include
@@ -40,7 +40,15 @@ ifeq ($(SUPPORT_HARFBUZZ),true)
     LOCAL_STATIC_LIBRARIES += harfbuzz
 endif
 
-LOCAL_SHARED_LIBRARIES := SDL2
+ifeq ($(APP_OPTIM),debug)
+	LOCAL_LDLIBS := $(SDL_TTF_LOCAL_PATH)/../../../../../sdl2/android-project/app/build/intermediates/merged_native_libs/debug/mergeDebugNativeLibs/out/lib/$(TARGET_ARCH_ABI)/libSDL2.so
+else
+	LOCAL_LDLIBS := $(SDL_TTF_LOCAL_PATH)/../../../../../sdl2/android-project/app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib/$(TARGET_ARCH_ABI)/libSDL2.so
+endif
+
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../../sdl2/include
+
+#LOCAL_SHARED_LIBRARIES := SDL2
 
 LOCAL_EXPORT_C_INCLUDES += $(LOCAL_C_INCLUDES)
 
