@@ -23,6 +23,8 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := SDL2_ttf
 
+LOCAL_ARM_MODE := arm
+
 LOCAL_C_INCLUDES := $(LOCAL_PATH)
 
 LOCAL_SRC_FILES := SDL_ttf.c.neon
@@ -59,6 +61,8 @@ include $(BUILD_SHARED_LIBRARY)
 ###########################
 
 LOCAL_MODULE := SDL2_ttf_static
+
+LOCAL_ARM_MODE := arm
 
 LOCAL_MODULE_FILENAME := libSDL2_ttf
 
