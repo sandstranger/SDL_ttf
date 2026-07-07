@@ -12112,8 +12112,8 @@ printf %s "checking how to create a ustar tar archive... " >&6; }
     case $_am_tool in
     gnutar)
       for _am_tar in tar gnutar gtar; do
-        { echo "$as_me:$LINENO: $_am_tar --version" >&5
-   ($_am_tar --version) >&5 2>&5
+        { echo "$as_me:$LINENO: $_am_tar --version | grep GNU >/dev/null" >&5
+   ($_am_tar --version | grep GNU >/dev/null) >&5 2>&5
    ac_status=$?
    echo "$as_me:$LINENO: \$? = $ac_status" >&5
    (exit $ac_status); } && break
@@ -12125,7 +12125,7 @@ printf %s "checking how to create a ustar tar archive... " >&6; }
     plaintar)
       # Must skip GNU tar: if it does not support --format= it doesn't create
       # ustar tarball either.
-      (tar --version) >/dev/null 2>&1 && continue
+      (tar --version | grep GNU) >/dev/null 2>&1 && continue
       am__tar='tar cf - "$$tardir"'
       am__tar_='tar cf - "$tardir"'
       am__untar='tar xf -'
@@ -20004,14 +20004,8 @@ printf "%s\n" "#define ALIGNOF_STRUCT_CHAR__ $ac_cv_alignof_struct_char__" >>con
 			TTF_LIBS="$TTF_LIBS -lusp10 -lgdi32 -lrpcrt4"
 			PC_LIBS="$PC_LIBS -lusp10 -lgdi32 -lrpcrt4"
 		  ;;
-		  *-*-darwin*)
+		  *-*-darwin*|*-ios-*)
 			# for coretext support:
-			TTF_LIBS="$TTF_LIBS -framework ApplicationServices"
-			PC_LIBS="$PC_LIBS -framework ApplicationServices"
-		  ;;
-		  *-ios-*)
-			# for coretext support:
-			# On iOS CoreText and CoreGraphics are stand-alone frameworks
 			TTF_LIBS="$TTF_LIBS -framework CoreText -framework CoreGraphics -framework CoreFoundation"
 			PC_LIBS="$PC_LIBS -framework CoreText -framework CoreGraphics -framework CoreFoundation"
 		  ;;
