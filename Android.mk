@@ -41,11 +41,9 @@ ifeq ($(SUPPORT_HARFBUZZ),true)
 endif
 
 ifeq ($(APP_OPTIM),debug)
-	LOCAL_LDLIBS += $(SDL_TTF_LOCAL_PATH)/../../../../../sdl2-compat/build/intermediates/merged_native_libs/debug/mergeDebugNativeLibs/out/lib/$(TARGET_ARCH_ABI)/libSDL2.so
-	LOCAL_LDLIBS += $(SDL_TTF_LOCAL_PATH)/../../../../../SAFFAL/saffal/build/intermediates/merged_native_libs/debug/mergeDebugNativeLibs/out/lib/$(TARGET_ARCH_ABI)/libsaffal.so
+	LOCAL_LDLIBS := $(SDL_TTF_LOCAL_PATH)/../../../../../sdl2-compat//build/intermediates/merged_native_libs/debug/mergeDebugNativeLibs/out/lib/$(TARGET_ARCH_ABI)/libSDL2.so
 else
-	LOCAL_LDLIBS += $(SDL_TTF_LOCAL_PATH)/../../../../../sdl2-compat/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib/$(TARGET_ARCH_ABI)/libSDL2.so
-	LOCAL_LDLIBS += $(SDL_TTF_LOCAL_PATH)/../../../../../SAFFAL/saffal/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib/$(TARGET_ARCH_ABI)/libsaffal.so
+	LOCAL_LDLIBS := $(SDL_TTF_LOCAL_PATH)/../../../../../sdl2-compat//build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib/$(TARGET_ARCH_ABI)/libSDL2.so
 endif
 
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../../sdl2-compat/src/main/jni/sdl2-compat/include
